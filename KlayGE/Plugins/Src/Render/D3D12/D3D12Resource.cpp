@@ -117,13 +117,5 @@ namespace KlayGE
 				state_changed = true;
 			}
 		}
-
-		if (!state_changed && (target_state == D3D12_RESOURCE_STATE_UNORDERED_ACCESS))
-		{
-			barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_UAV;
-			barrier.UAV.pResource = d3d_resource_.get();
-
-			re.AddResourceBarrier(cmd_list, MakeSpan<1>(barrier));
-		}
 	}
 }
